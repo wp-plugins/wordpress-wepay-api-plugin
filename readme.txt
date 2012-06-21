@@ -11,9 +11,10 @@ The WePay API WordPress Plugin makes it a bit easier to make API calls and not h
 == Description ==
 
 What you can do with this version
+  - Make all WePay API Calls thru shortcodes
+  - IPN customizable file included
   - Get a checkout link 
   - Make an iframe checkout
-  - Added varible to set a different thank you page on each call
   
 == Installation ==
 
