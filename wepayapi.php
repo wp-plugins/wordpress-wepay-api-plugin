@@ -3,7 +3,7 @@
 Plugin Name: WePay API Wordpress Plugin
 Plugin URI: http://www.alanpinnt.com/wordpress-wepay-plugin/
 Description: With this plugin you can make direct API requests using short codes. With this method your not limited to just buttons or invoices. This is an addon to the main WePay Plugin, which you need to run this one. This plugin is not for novice users, although you do not have to write any PHP code you do have to understand the calls being made and how to properly make them.
-Version: 1.0
+Version: 1.1
 Author: Alan pinnt
 Author URI: http://www.alanpinnt.com/
 License: GPL3
@@ -93,7 +93,7 @@ Contact me from my blog <a href="http://www.alanpinnt.com/contact-me/" target="_
 ///Shortcode
 function wepay_api_link_shortcode($thelink){
 	
-	extract( shortcode_atts( array('text' => 'Buy Now', 'type' => 'GOODS', 'refid' => '', 'amount' => '1.00', 'feepayer' => 'Payee', 'sdesc' => 'Short Description', 'email_mess' => 'Thank you for your payment.', 'tax' => '0', 'css' => 'button', 'thankq' => '1', 'ipn' => 'N'), $thelink ) );
+	extract( shortcode_atts( array('type' => 'GOODS', 'refid' => '', 'amount' => '1.00', 'feepayer' => 'Payee', 'sdesc' => 'Short Description', 'email_mess' => 'Thank you for your payment.', 'tax' => '0', 'css' => 'button', 'thankq' => '1', 'ipn' => 'N'), $thelink ) );
 
 	$b_text = "{$text}";
 	$b_type = "{$type}";
@@ -166,7 +166,7 @@ add_shortcode( 'wepay-api-link', 'wepay_api_link_shortcode');
 
 function wepay_api_iframe_shortcode($theiframe){
 	
-	extract( shortcode_atts( array('text' => 'Buy Now', 'type' => 'GOODS', 'refid' => '', 'amount' => '1.00', 'feepayer' => 'Payee', 'sdesc' => 'Short Description', 'email_mess' => 'Thank you for your payment.', 'tax' => '0', 'css' => 'button', 'thankq' => '1', 'ipn' => 'N'), $theiframe ) );
+	extract( shortcode_atts( array('type' => 'GOODS', 'refid' => '', 'amount' => '1.00', 'feepayer' => 'Payee', 'sdesc' => 'Short Description', 'email_mess' => 'Thank you for your payment.', 'tax' => '0', 'css' => 'button', 'thankq' => '1', 'ipn' => 'N'), $theiframe ) );
 
 	$b_text = "{$text}";
 	$b_type = "{$type}";
@@ -236,7 +236,7 @@ print '<div id="checkout_div"></div>
 
 <script type="text/javascript">
 WePay.iframe_checkout("checkout_div", "'.$checkout->checkout_uri.'");
-</script>sss'.$thetqpage;
+</script>';
 }
 add_shortcode( 'wepay-api-iframe', 'wepay_api_iframe_shortcode' );
 
