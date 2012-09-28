@@ -3,7 +3,7 @@
 Plugin Name: WePay API Wordpress Plugin
 Plugin URI: http://www.alanpinnt.com/wordpress-wepay-plugin/
 Description: With this plugin you can make direct API requests using short codes. With this method your not limited to just buttons or invoices. This is an addon to the main WePay Plugin, which you need to run this one. This plugin is not for novice users, although you do not have to write any PHP code you do have to understand the calls being made and how to properly make them.
-Version: 1.1
+Version: 1.2
 Author: Alan pinnt
 Author URI: http://www.alanpinnt.com/
 License: GPL3
@@ -24,7 +24,7 @@ License: GPL3
 
 define('WEPAY_API_PLUGIN_NAME', 'Wepay Wordpress Plugin');
 define('WEPAY_API_PLUGIN_URI', 'http://www.alanpinnt.com/wordpress-wepay-api-plugin/');
-define('WEPAY_API_VERSION', '1.0');
+define('WEPAY_API_VERSION', '1.2');
 define('WEPAY_API_AUTHOR', 'Alan Pinnt');
 define('WEPAY_ADDON_API_AUTHOR_URI', 'http://www.alanpinnt.com/');
 
@@ -566,8 +566,9 @@ add_shortcode( 'wepay-api-checkout', 'wepay_api_checkout_sc' );
 function wepay_api_preapproval_sc($data) {
 //// https://www.wepay.com/developer/reference/preapproval
 	
-    extract( shortcode_atts( array('do' => '/account', 'response' => '','accountid' => '',
+    extract( shortcode_atts( array('do' => '/preapproval', 'response' => '','accountid' => '',
     'referenceid' => '','preapprovalid' => '','state' => '',
+    'shortdescription' => '',
     'longdescription' => '','type' => 'GOODS','amount' => '0.01',
     'appfee' => '0.00','feepayer' => 'Payee','redirect' => 'http://www.google.com','callback' => WPWEPAY_API_PATH."wepayipn.php",
     'shipping' => '0','shippingfee' => '0',
@@ -580,7 +581,8 @@ function wepay_api_preapproval_sc($data) {
     $wapi_accountid = "{$accountid}";
     $wapi_referenceid = "{$referenceid}";
     $wapi_preapprovalid = "{$preapprovalid}";
-    $wapi_state = "{$state}";	
+    $wapi_state = "{$state}";
+    $wapi_description = "{$longdescription}";
     $wapi_longdesc = "{$longdescription}";
     $wapi_type = "{$type}";
     $wapi_amount = "{$amount}";
